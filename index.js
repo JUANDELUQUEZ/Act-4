@@ -1,3 +1,4 @@
+const path = require("path");
 // Importación de librerías
 require("dotenv").config();
 const express = require("express");
@@ -10,7 +11,7 @@ const app = express();
 app.use(express.json()); // Permite que el servidor reciba y entienda datos en formato JSON
 
 // Servir archivos estáticos desde la carpeta 'public'
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 // Conexión a la base de datos MongoDB usando Mongoose
 mongoose
@@ -28,6 +29,10 @@ app.use("/api/productos", require("./routes/productos"));
 // Ruta de prueba básica
 app.get("/", (req, res) => {
   res.send("Servidor de Gestión de Productos Activo");
+});
+
+app.get("/login.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "login.html"));
 });
 
 // Inicialización del servidor solo si este archivo se ejecuta directamente
