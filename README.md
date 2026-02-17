@@ -26,5 +26,5 @@ Siga estos pasos estrictamente para levantar el servidor local:
 
 1. **Clonar el repositorio**
    ```bash
-   git clone <ENLACE_DE_TU_REPOSITORIO_AQUI>
+   git clone https://github.com/JUANDELUQUEZ/Act-4
    cd actividad-4-productos
