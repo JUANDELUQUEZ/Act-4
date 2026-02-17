@@ -1,0 +1,27 @@
+name: CI/CD Pipeline - Actividad 4
+
+on:
+  push:
+    branches: ["main", "master"]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el código del repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar el entorno Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Ejecutar pruebas unitarias automatizadas
+        run: npm test
+        env:
+          JWT_SECRET: clave_secreta_para_pruebas
+          MONGO_URI: mongodb://127.0.0.1:27017/db_pruebas
