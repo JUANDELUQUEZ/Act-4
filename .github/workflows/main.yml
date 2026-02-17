@@ -8,6 +8,13 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
+    # Levantamos un servicio de MongoDB temporal y aislado en GitHub
+    services:
+      mongodb:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+
     steps:
       - name: Descargar el código del repositorio
         uses: actions/checkout@v3
